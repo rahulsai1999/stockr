@@ -3,5 +3,4 @@ tweepy
 textblob
 pandas_datareader
 pandas
-json
 re
