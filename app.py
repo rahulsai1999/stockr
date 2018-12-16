@@ -1,6 +1,5 @@
 import re
 import json
-import matplotlib.pyplot as plt
 import pandas as pd
 import tweepy
 from flask import Flask
@@ -94,7 +93,6 @@ class TwitterClient(object):
 			print("Error : " + str(e))
 
 @app.route("/")
-
 def hxx():
     return "/stock/MSFT for stock data and /nlp/query for NLP data"
 
