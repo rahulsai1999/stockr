@@ -1,14 +1,7 @@
-import re
-import json
-import matplotlib.pyplot as plt
-import pandas as pd
-import tweepy
-from flask import Flask
-from pandas_datareader import data
-from textblob import TextBlob
-from tweepy import OAuthHandler
-
-app = Flask(__name__)
+import re 
+import tweepy 
+from tweepy import OAuthHandler 
+from textblob import TextBlob 
 
 class TwitterClient(object): 
 	''' 
@@ -91,40 +84,34 @@ class TwitterClient(object):
 
 		except tweepy.TweepError as e: 
 			# print error (if any) 
-			print("Error : " + str(e))
+			print("Error : " + str(e)) 
 
-@app.route("/")
-
-def hxx():
-    return "/stock/MSFT for stock data and /nlp/query for NLP data"
-
-@app.route("/stock/<ticker>")
-def hello(ticker):
-    start_date = '2017-01-01'
-    end_date = '2018-12-14'
-    panel_data = data.DataReader(ticker, 'yahoo', start_date, end_date)
-
-    return panel_data.to_json()
-
-@app.route("/nlp/<qurry>")
-def findeverything(qurry):
-    # creating object of TwitterClient Class 
+def main(): 
+	# creating object of TwitterClient Class 
 	api = TwitterClient() 
 	# calling function to get tweets 
-	tweets = api.get_tweets(query = qurry, count = 1000) 
+	tweets = api.get_tweets(query = 'Formula1', count = 1000) 
 
 	# picking positive tweets from tweets 
-	ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive']
+	ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
+	# percentage of positive tweets 
+	print("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets))) 
+	# picking negative tweets from tweets 
 	ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative'] 
-    
-	ptweper=len(ptweets)/len(tweets)
-    
-	ntweper=len(ntweets)/len(tweets)
-    
-	finobj={'p':ptweper,'n':ntweper,'ptwe':ptweets,'ntwe':ntweets}
+	# percentage of negative tweets 
+	print("Negative tweets percentage: {} %".format(100*len(ntweets)/len(tweets))) 
+	
 
-	return json.dumps(finobj)
+	# printing first 5 positive tweets 
+	print("\n\nPositive tweets:") 
+	for tweet in ptweets[:10]: 
+		print(tweet['text']) 
 
+	# printing first 5 negative tweets 
+	print("\n\nNegative tweets:") 
+	for tweet in ntweets[:10]: 
+		print(tweet['text']) 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__": 
+	# calling main function 
+	main() 
