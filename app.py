@@ -98,7 +98,7 @@ def hxx():
 
 @app.route("/stock/<ticker>")
 def hello(ticker):
-    start_date = '2017-01-01'
+    start_date = '2018-12-01'
     end_date = '2018-12-14'
     panel_data = data.DataReader(ticker, 'yahoo', start_date, end_date)
 
