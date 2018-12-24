@@ -3,4 +3,3 @@ tweepy
 textblob
 pandas_datareader
 pandas
-re
