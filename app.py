@@ -1,4 +1,5 @@
 import re
+import datetime
 import json
 import pandas as pd
 import tweepy
@@ -99,7 +100,7 @@ def hxx():
 @app.route("/stock/<ticker>")
 def hello(ticker):
     start_date = '2018-12-01'
-    end_date = '2018-12-14'
+    end_date = datetime.datetime.today().strftime('%Y-%m-%d')
     panel_data = data.DataReader(ticker, 'yahoo', start_date, end_date)
 
     return panel_data.to_json()
