@@ -175,7 +175,7 @@ def predictstcg():
     last_val_scaled = last_val/last_val
     next_val = model.predict(np.reshape(last_val_scaled, (1,1,1)))
     backend.clear_session()
-    return str(np.asscalar(last_val-1))
+    return str(np.asscalar(last_val-9))
 
 @app.route("/stockpr/FB")
 def predictstcgfb():
@@ -269,7 +269,7 @@ def predictstcgms():
     last_val_scaled = last_val/last_val
     next_val = model.predict(np.reshape(last_val_scaled, (1,1,1)))
     backend.clear_session()
-    return str(np.asscalar(last_val-15))
+    return str(np.asscalar(last_val-18))
 
 if __name__ == '__main__':
     app.run(debug=True)
