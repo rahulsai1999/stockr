@@ -1,4 +1,7 @@
 # Stock Price Prediction of Apple Inc. Using Recurrent Neural Network
+
+[![Build Status](https://travis-ci.com/rahulsai1999/stockr.svg?branch=master)](https://travis-ci.com/rahulsai1999/stockr)
+
 OHLC Average Prediction of Apple Inc. Using LSTM Recurrent Neural Network
 
 # Dataset:
