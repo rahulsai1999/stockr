@@ -4,9 +4,8 @@ pandas_datareader
 requests
 matplotlib
 sklearn
-keras
+keras==2.2.5
 gunicorn
 flask
 tweepy
 textblob
-tensorflow
