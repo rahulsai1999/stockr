@@ -4,5 +4,5 @@ services:
 
 script:
   - docker build -t noneuser2183/mldocker .
-  - echo "$docpass" | docker login -u "$docid" --password -stdin
+  - echo "$docpass" | docker login -u "$docid" --password-stdin
   - docker push noneuser2183/mldocker
