@@ -14,7 +14,7 @@ import math
 import redis
 
 np.random.seed(7)
-r = redis.Redis()
+r = redis.Redis(host='redis',port=6379)
 
 
 def pred(ticker):

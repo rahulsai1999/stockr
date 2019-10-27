@@ -1,5 +1,5 @@
 import redis
-r = redis.Redis()
+r = redis.Redis(host='redis',port=6379)
 
 
 def getval(ticker):
