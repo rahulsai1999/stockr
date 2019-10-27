@@ -11,8 +11,10 @@ from keras.layers import Dense, Activation
 from keras.layers import LSTM
 import preprocessing
 import math
+import redis
 
 np.random.seed(7)
+r = redis.Redis()
 
 
 def pred(ticker):
@@ -90,8 +92,11 @@ def pred(ticker):
     last_val = testPredict[-1]
     last_val_scaled = last_val/last_val
     next_val = model.predict(np.reshape(last_val_scaled, (1, 1, 1)))
-    finobj = {'last': np.asscalar(last_val), 'next': np.asscalar(last_val*next_val)}
-    return finobj
+    finobj = {'last': np.asscalar(
+        last_val), 'next': np.asscalar(last_val*next_val)}
+    r.set(ticker+"last", finobj['last'])
+    r.set(ticker+'next', finobj['next'])
+    return {'result': ticker+" Values Stored"}
 
 
 # ticker = sys.argv[1]

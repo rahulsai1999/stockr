@@ -1,0 +1,12 @@
+version: "3"
+services:
+  redis:
+    image: redis:alpine3.10
+    container_name: redis_web
+    ports:
+      - "6379:6379"
+  web:
+    image: noneuser2183/mldocker:v2
+    container_name: flask_web
+    ports:
+      - "8000:5000"

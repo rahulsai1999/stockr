@@ -1,7 +1,8 @@
 from flask import Flask
-import json
+import simplejson as json
 import atrain
 import bpredict
+import cretrieve
 import nlp
 
 app = Flask(__name__)
@@ -15,13 +16,13 @@ def fx():
 @app.route('/stock/<ticker>')
 def trainModel(ticker):
     x = atrain.train(ticker)
-    y = {'result': x}
+    y = bpredict.pred(ticker)
     return json.dumps(y)
 
 
 @app.route('/stockpr/<ticker>')
 def predictModel(ticker):
-    y = bpredict.pred(ticker)
+    y = cretrieve.getval(ticker)
     return json.dumps(y)
 
 

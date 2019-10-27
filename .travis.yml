@@ -3,6 +3,6 @@ services:
   - docker
 
 script:
-  - docker build -t noneuser2183/mldocker .
+  - docker build -t noneuser2183/mldocker:v2 .
   - echo "$docpass" | docker login -u "$docid" --password-stdin
-  - docker push noneuser2183/mldocker
+  - docker push noneuser2183/mldocker:v2
