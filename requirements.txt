@@ -12,3 +12,4 @@ numpy==1.16.2
 tensorflow==1.13.1
 redis
 simplejson
+flask-cors

@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 import simplejson as json
 import atrain
 import bpredict
@@ -6,6 +7,7 @@ import cretrieve
 import nlp
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/', methods=['GET'])
