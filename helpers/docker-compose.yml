@@ -1,10 +1,15 @@
 version: "3"
 services:
   redis:
-    image: redis:alpine3.10
+    image: bitnami/redis:5.0
     container_name: redis_web
+    environment: 
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     ports:
       - "6379:6379"
+    volumes:
+      - redis-data:/bitnami/redis/data
   web:
     image: noneuser2183/mldocker:v2
     container_name: flask_web
