@@ -9,7 +9,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - redis-data:/bitnami/redis/data
+      - ./redis-data:/bitnami/redis/data
   web:
     image: noneuser2183/mldocker:v2
     container_name: flask_web
